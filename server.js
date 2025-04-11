@@ -31,7 +31,7 @@ Customer have sentiment index:
   try {
     await transporter.sendMail({
       from: `"Sentiment Service" <${process.env.EMAIL_USER}>`,
-      to,
+      to: Array.isArray(to) ? to.join(',') : to,
       subject: 'Customer Sentiment Report',
       text: content,
     });
